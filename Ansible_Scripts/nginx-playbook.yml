@@ -1,0 +1,14 @@
+---
+
+- hosts : test-servers
+#NEXT is task -- 
+tasks :
+  - name : install nginx
+      apt  : pkg=nginx state=installed
+	 
+#Handler is used
+notify:
+ - start nginx	  
+handlers :
+    - name : start nginx
+      service :  name=nginx state=started
